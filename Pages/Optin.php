@@ -60,6 +60,9 @@ class Optin extends Page {
         }
 
         $user = User::addUser($email);
+        if (!empty($this->settings['list_id'])) {
+            $user->subscribe($this->settings['list_id']);
+        }
 
         // Create a regular token and insert into the database.
         $db = Database::getInstance();
