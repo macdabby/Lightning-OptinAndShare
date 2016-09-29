@@ -5,6 +5,7 @@ namespace Modules\OptinAndShare\Pages;
 use Lightning\Model\User;
 use Lightning\Tools\Configuration;
 use Lightning\Tools\Database;
+use Lightning\Tools\Form;
 use Lightning\Tools\Messenger;
 use Lightning\Tools\Request;
 use Lightning\Tools\Security\Random;
@@ -29,6 +30,7 @@ class Optin extends Page {
     }
 
     public function get() {
+        Form::requiresToken();
         if (!empty($this->settings['templates']['optin'])) {
             $this->page = $this->settings['templates']['optin'];
         }
